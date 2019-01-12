@@ -2,6 +2,7 @@ package br.goodmann.horario.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ import br.goodmann.horario.service.ArquivoUtil;
 import br.goodmann.horario.service.MontaObjetos;
 import br.goodmann.horario.service.MontaQuadros;
 
+@CrossOrigin
 @RestController
 public class HorarioController {
 
