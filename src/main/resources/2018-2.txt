@@ -1,0 +1,106 @@
+Nivel:01     Codicred:4610T-02
+Nome: FERRAMENTAS COMPUTACIONAIS 
+  350 - Vagas:0  Horários: 5NP 
+  360 - Vagas:9  Horários: 6JK 
+  370 - Vagas:0  Horários: 2LM 
+
+Nivel:03     Codicred:44647-02
+Nome: PROGRAMAÇÃO DE ROBOS 
+  450 - Vagas:6  Horários: 2JK 
+  470 - Vagas:4  Horários: 2NP 
+  480 - Vagas:6  Horários: 4LM 
+  490 - Vagas:7  Horários: 5LM 
+
+Nivel:04     Codicred:4115R-04
+Nome: CÁLCULO DIFERENCIAL E INTEGRAL IV 
+  350 - Vagas:22  Horários: 4NP6LM 
+  360 - Vagas:10  Horários: 4JK6LM 
+  390 - Vagas:28  Horários: 3LM6NP 
+  590 - Vagas:4  Horários: 2NP4LM 
+
+Nivel:04     Codicred:4210B-04
+Nome: DINÂMICA DO CORPO RÍGIDO 
+  340 - Vagas:10  Horários: 3NP5LM 
+  350 - Vagas:0  Horários: 3NP5NP 
+
+Nivel:04     Codicred:4444D-02
+Nome: FUNDIÇÃO 
+  370 - Vagas:8  Horários: 2LM 
+
+Nivel:04     Codicred:4444E-02
+Nome: MATERIAIS POLIMÉRICOS 
+  370 - Vagas:14  Horários: 5LM 
+
+Nivel:04     Codicred:4453G-02
+Nome: ELETROTÉCNICA - EM 
+  470 - Vagas:13  Horários: 3LM 
+
+Nivel:05     Codicred:11521-04
+Nome: HUMANISMO E CULTURA RELIGIOSA 
+  128 - Vagas:32  Horários: 2EE14EE1 
+  140 - Vagas:3  Horários: 3HI4HI 
+  150 - Vagas:3  Horários: 3LM5LM 
+  450 - Vagas:1  Horários: 6LMNP 
+  460 - Vagas:1  Horários: 5LMNP 
+  470 - Vagas:5  Horários: 3NP5NP 
+
+Nivel:05     Codicred:4421R-04
+Nome: RESISTÊNCIA DOS MATERIAIS I - EM 
+  460 - Vagas:19  Horários: 2JK5LM 
+
+Nivel:05     Codicred:4444J-04
+Nome: MECANISMOS E DINÂMICA DE MÁQUINAS 
+  470 - Vagas:22  Horários: 3NP4LM 
+
+Nivel:05     Codicred:4444L-04
+Nome: MECÂNICA DOS FLUIDOS 
+  380 - Vagas:0  Horários: 2LM4NP 
+  390 - Vagas:1  Horários: 2JK4NP 
+
+Nivel:05     Codicred:4444M-04
+Nome: SOLDAGEM 
+  370 - Vagas:12  Horários: 3LM4LM 
+  380 - Vagas:4  Horários: 2NP3LM 
+  470 - Vagas:1  Horários: 3LM5NP 
+
+Nivel:06     Codicred:1501A-04
+Nome: ÉTICA E CIDADANIA 
+  140 - Vagas:2  Horários: 3HI4HI 
+  150 - Vagas:24  Horários: 2JK5JK 
+  160 - Vagas:45  Horários: 2JK5JK 
+  350 - Vagas:1  Horários: 6LMNP 
+  360 - Vagas:2  Horários: 5LMNP 
+
+Nivel:06     Codicred:4444P-02
+Nome: ENGENHARIA DA QUALIDADE 
+  370 - Vagas:19  Horários: 3LM 
+
+Nivel:06     Codicred:4444R-04
+Nome: VIBRAÇÕES MECÂNICAS 
+  370 - Vagas:9  Horários: 2LMNP 
+
+Nivel:06     Codicred:4444T-04
+Nome: TRANSFERÊNCIA DE CALOR 
+  370 - Vagas:18  Horários: 4LM5LM 
+
+Nivel:06     Codicred:4453U-02
+Nome: ELETRÔNICA BÁSICA - EM 
+  480 - Vagas:24  Horários: 3JK 
+
+Nivel:08     Codicred:4445E-04
+Nome: MÁQUINAS TÉRMICAS 
+  370 - Vagas:18  Horários: 4LMNP 
+  380 - Vagas:22  Horários: 2NP4LM 
+
+Nivel:08     Codicred:4445L-02
+Nome: MANUFATURA ASSISTIDA POR C. (CAM) 
+  350 - Vagas:5  Horários: 4LM 
+  360 - Vagas:0  Horários: 4JK 
+  370 - Vagas:3  Horários: 3NP 
+
+Nivel:09     Codicred:44449-04
+Nome: GERAÇÃO E UTILIZAÇÃO DO VAPOR 
+  370 - Vagas:36  Horários: 2LM6NP 
+
+Nivel:09     Codicred:4445R-04
+Nome: CONTROLE HIDRÁULICO E PNEUMÁTICO 
