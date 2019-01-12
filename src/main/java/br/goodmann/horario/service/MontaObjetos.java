@@ -1,9 +1,9 @@
-package br.alexandregoodmann.horario2;
+package br.goodmann.horario.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.goodmann.model.Cadeira;
+import br.goodmann.horario.model.Cadeira;
 
 public class MontaObjetos {
 

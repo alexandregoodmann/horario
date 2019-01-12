@@ -1,4 +1,4 @@
-package br.com.goodmann.model;
+package br.goodmann.horario.model;
 
 public class Quadro {
 

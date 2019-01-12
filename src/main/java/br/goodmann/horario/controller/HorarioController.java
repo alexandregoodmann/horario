@@ -1,18 +1,18 @@
-package br.alexandregoodmann.horario2.controller;
+package br.goodmann.horario.controller;
 
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.alexandregoodmann.horario2.MontaObjetos;
-import br.alexandregoodmann.horario2.MontaQuadros;
-import br.com.goodmann.model.Cadeira;
-import br.com.goodmann.model.Quadro;
-import br.com.goodmann.util.ArquivoUtil;
+import br.goodmann.horario.model.Cadeira;
+import br.goodmann.horario.model.Quadro;
+import br.goodmann.horario.service.ArquivoUtil;
+import br.goodmann.horario.service.MontaObjetos;
+import br.goodmann.horario.service.MontaQuadros;
 
 @RestController
-public class horario {
+public class HorarioController {
 
 	@GetMapping("/quadros")
 	public List<Quadro> test() throws Exception {
@@ -23,7 +23,7 @@ public class horario {
 		String[] ignorarCadeiras = {};
 
 		// Ler Arquivo e pega as linhas
-		String path = "/home/alexandre/eclipse-workspace/horario/resource/2019-1.txt";
+		String path = "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
 		ArquivoUtil arquivo = new ArquivoUtil();
 		List<String> linhas = arquivo.lerArquivo(path);
 

@@ -1,4 +1,4 @@
-package br.com.goodmann.model;
+package br.goodmann.horario.model;
 
 import java.util.List;
 

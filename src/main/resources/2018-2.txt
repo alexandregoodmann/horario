@@ -37,7 +37,6 @@ Nome: ELETROTÉCNICA - EM
 
 Nivel:05     Codicred:11521-04
 Nome: HUMANISMO E CULTURA RELIGIOSA 
-  128 - Vagas:32  Horários: 2EE14EE1 
   140 - Vagas:3  Horários: 3HI4HI 
   150 - Vagas:3  Horários: 3LM5LM 
   450 - Vagas:1  Horários: 6LMNP 

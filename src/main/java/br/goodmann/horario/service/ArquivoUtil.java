@@ -1,4 +1,4 @@
-package br.com.goodmann.util;
+package br.goodmann.horario.service;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

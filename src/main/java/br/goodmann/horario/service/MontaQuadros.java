@@ -1,4 +1,4 @@
-package br.alexandregoodmann.horario2;
+package br.goodmann.horario.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.goodmann.model.Cadeira;
-import br.com.goodmann.model.Quadro;
+import br.goodmann.horario.model.Cadeira;
+import br.goodmann.horario.model.Quadro;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class MontaQuadros {

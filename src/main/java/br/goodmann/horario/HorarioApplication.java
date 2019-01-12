@@ -1,12 +1,12 @@
-package br.alexandregoodmann.horario2;
+package br.goodmann.horario;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Horario2Application {
+public class HorarioApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Horario2Application.class, args);
+		SpringApplication.run(HorarioApplication.class, args);
 	}
 }
