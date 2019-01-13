@@ -1,21 +1,19 @@
 package br.goodmann.horario.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Quadro {
 
-	private Cadeira data[][];
+	@JsonIgnore
+	private Map<String, Periodo> mapa = new HashMap<String, Periodo>();
+
+	private List<Periodo> periodos;
+
 	private int totalCredito;
-
-	public Quadro() {
-		this.data = new Cadeira[7][6];
-	}
-
-	public void put(Cadeira obj, int m, int n) {
-		this.data[m][n] = obj;
-	}
-
-	public Cadeira get(int m, int n) {
-		return this.data[m][n];
-	}
 
 	public int getTotalCredito() {
 		return totalCredito;
@@ -25,12 +23,20 @@ public class Quadro {
 		this.totalCredito = totalCredito;
 	}
 
-	public Cadeira[][] getData() {
-		return data;
+	public Map<String, Periodo> getMapa() {
+		return mapa;
 	}
 
-	public void setData(Cadeira[][] data) {
-		this.data = data;
+	public void setMapa(Map<String, Periodo> mapa) {
+		this.mapa = mapa;
+	}
+
+	public List<Periodo> getPeriodos() {
+		return periodos;
+	}
+
+	public void setPeriodos(List<Periodo> periodos) {
+		this.periodos = periodos;
 	}
 
 }

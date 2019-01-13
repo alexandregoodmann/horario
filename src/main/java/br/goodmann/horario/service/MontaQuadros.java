@@ -1,18 +1,16 @@
 package br.goodmann.horario.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import br.goodmann.horario.model.Cadeira;
+import br.goodmann.horario.model.Periodo;
 import br.goodmann.horario.model.Quadro;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class MontaQuadros {
-
-	private static final String PERIODOS[] = { "AB", "CD", "FG", "HI", "JK", "LM", "NP" };
 
 	private Map<String, Cadeira> mapa;
 
@@ -27,23 +25,27 @@ public class MontaQuadros {
 			List<Cadeira> listaCadeiras = (List<Cadeira>) list.get(i);
 
 			for (Cadeira cadeira : listaCadeiras) {
-				cadeira.getPeriodos().forEach(p -> {
-					quadro.put(cadeira, this.parseLinha(p), this.parseColuna(p));
+				cadeira.getPeriodos().forEach(periodo -> {
+					// quadro.put(cadeira, this.parseLinha(periodo), this.parseColuna(periodo));
+					String per = periodo.substring(1);
+					if (quadro.getMapa().containsKey(per)) {
+						quadro.getMapa().get(per).put(this.parseDia(periodo), cadeira);
+					} else {
+						Periodo obj = new Periodo();
+						obj.put(this.parseDia(periodo), cadeira);
+						quadro.getMapa().put(per, obj);
+					}
 				});
 			}
+			List<Periodo> periodos = new ArrayList<Periodo>(quadro.getMapa().values());
+			quadro.setPeriodos(periodos);
 			retorno.add(quadro);
 		}
 		return retorno;
 	}
 
-	private int parseLinha(String periodo) {
-		List<String> periodos = Arrays.asList(PERIODOS);
-		int ret = periodos.indexOf(periodo.substring(1));
-		return ret;
-	}
-
-	private int parseColuna(String periodo) {
-		int ret = Integer.parseInt(periodo.substring(0, 1)) - 2;
+	private int parseDia(String periodo) {
+		int ret = Integer.parseInt(periodo.substring(0, 1));
 		return ret;
 	}
 

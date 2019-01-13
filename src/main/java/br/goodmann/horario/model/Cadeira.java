@@ -2,11 +2,15 @@ package br.goodmann.horario.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Cadeira {
 
 	private String codigo;
 	private String descricao;
 	private int credito;
+
+	@JsonIgnore
 	private List<String> periodos;
 
 	public String getCodigo() {
