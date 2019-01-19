@@ -23,8 +23,6 @@ public class HorarioController {
 	@Autowired
 	private MontaQuadros montaQuadros;
 
-	private List<Cadeira> cadeiras;
-
 	@GetMapping("/cadeiras")
 	public List<Cadeira> cadeiras() throws Exception {
 
@@ -38,16 +36,30 @@ public class HorarioController {
 		ArquivoUtil arquivo = new ArquivoUtil();
 		List<String> linhas = arquivo.lerArquivo(path);
 
-		this.cadeiras = this.montaObjetos.cadeiras(linhas, ignorarPeriodos, ignorarCadeiras);
+		List<Cadeira> cadeiras = this.montaObjetos.cadeirasNaoDuplicadas(linhas, ignorarPeriodos, ignorarCadeiras);
 
-		return this.cadeiras;
+		return cadeiras;
+	}
+
+	private List<Cadeira> cadeiras() {
+
 	}
 
 	@GetMapping("/quadros")
 	public List<Quadro> quadros() throws Exception {
-		if (this.cadeiras == null || this.cadeiras.isEmpty()) {
-			this.cadeiras = this.cadeiras();
-		}
-		return this.montaQuadros.quadros(this.cadeiras);
+
+		// IGNORAR
+		String[] ignorarPeriodos = {};
+
+		String[] ignorarCadeiras = {};
+
+		// Ler Arquivo e pega as linhas
+		String path = "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
+		ArquivoUtil arquivo = new ArquivoUtil();
+		List<String> linhas = arquivo.lerArquivo(path);
+
+		List<Cadeira> cadeiras = this.montaObjetos.cadeiras(linhas, ignorarPeriodos, ignorarCadeiras);
+
+		return this.montaQuadros.quadros(cadeiras);
 	}
 }

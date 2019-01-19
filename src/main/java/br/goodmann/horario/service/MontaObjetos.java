@@ -1,7 +1,9 @@
 package br.goodmann.horario.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -49,7 +51,20 @@ public class MontaObjetos {
 		return list;
 	}
 
-	public List<Cadeira> cadeiras(List<String> linhas, String[] vetPeriodos, String[] vetCadeiras) throws Exception {
+	public List<Cadeira> cadeirasNaoDuplicadas(List<String> linhas, String[] ignorarPeriodos, String[] ignorarCadeiras)
+			throws Exception {
+
+		Map<String, Cadeira> mapa = new HashMap<String, Cadeira>();
+		List<Cadeira> lista = this.cadeiras(linhas, ignorarPeriodos, ignorarCadeiras);
+		lista.forEach(c -> {
+			mapa.put(c.getCodigo(), c);
+		});
+
+		return new ArrayList<Cadeira>(mapa.values());
+	}
+
+	public List<Cadeira> cadeiras(List<String> linhas, String[] ignorarPeriodos, String[] ignorarCadeiras)
+			throws Exception {
 
 		List<Cadeira> cadeiras = new ArrayList<Cadeira>();
 
@@ -76,14 +91,14 @@ public class MontaObjetos {
 
 					Cadeira cadeira = new Cadeira();
 					cadeira.setDescricao(descricao);
-					if ("".equals(codigo) || codigo == null){
+					if ("".equals(codigo) || codigo == null) {
 						throw new Exception("codigo vazio");
 					}
 					cadeira.setCodigo(codigo);
 					cadeira.setCredito(credito);
 					cadeira.setPeriodos(this.formataHorario(linha));
 
-					if (!this.ignorar(cadeira, vetPeriodos, vetCadeiras)) {
+					if (!this.ignorar(cadeira, ignorarPeriodos, ignorarCadeiras)) {
 						cadeiras.add(cadeira);
 					}
 				}
@@ -92,17 +107,17 @@ public class MontaObjetos {
 		return cadeiras;
 	}
 
-	private boolean ignorar(Cadeira cadeira, String[] vetPeriodos, String[] vetCadeiras) {
+	private boolean ignorar(Cadeira cadeira, String[] ignorarPeriodos, String[] ignorarCadeiras) {
 
 		// ignora os Períodos listados (2JK, 3LM, 5NP)
-		for (String per : vetPeriodos) {
+		for (String per : ignorarPeriodos) {
 			if (cadeira.getPeriodos().contains(per)) {
 				return true;
 			}
 		}
 
 		// ignora as cadeias listadas
-		for (String car : vetCadeiras) {
+		for (String car : ignorarCadeiras) {
 			if (car.equalsIgnoreCase(cadeira.getCodigo())) {
 				return true;
 			}
@@ -111,15 +126,4 @@ public class MontaObjetos {
 		return false;
 	}
 
-	/*
-	 * public static void main(String[] args) throws IOException {
-	 * 
-	 * ArquivoUtil arquivo = new ArquivoUtil(); List<String> linhas =
-	 * arquivo.lerArquivo();
-	 * 
-	 * MontaObjetos monta = new MontaObjetos(); List<Cadeira> cadeiras =
-	 * monta.cadeiras(linhas);
-	 * 
-	 * for (Cadeira cad : cadeiras) { System.out.println(cad); } }
-	 */
 }
