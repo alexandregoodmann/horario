@@ -1,13 +1,14 @@
 package br.goodmann.horario.model;
 
-public class Periodo {
+public class Periodo implements Comparable<Periodo> {
 
-	private Cadeira segunda;
-	private Cadeira terca;
-	private Cadeira quarta;
-	private Cadeira quinta;
-	private Cadeira sexta;
-	private Cadeira sabado;
+	private String periodo = "";
+	private Cadeira segunda = new Cadeira();
+	private Cadeira terca = new Cadeira();
+	private Cadeira quarta = new Cadeira();
+	private Cadeira quinta = new Cadeira();
+	private Cadeira sexta = new Cadeira();
+	private Cadeira sabado = new Cadeira();
 
 	public void put(int dia, Cadeira cadeira) {
 		switch (dia) {
@@ -83,4 +84,16 @@ public class Periodo {
 		this.sabado = sabado;
 	}
 
+	public String getPeriodo() {
+		return this.periodo;
+	}
+
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
+	}
+
+	@Override
+	public int compareTo(Periodo o) {
+		return this.periodo.compareTo(o.getPeriodo());
+	}
 }

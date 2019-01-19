@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Quadro {
+public class Quadro implements Comparable<Quadro> {
 
 	@JsonIgnore
 	private Map<String, Periodo> mapa = new HashMap<String, Periodo>();
@@ -37,6 +37,16 @@ public class Quadro {
 
 	public void setPeriodos(List<Periodo> periodos) {
 		this.periodos = periodos;
+	}
+
+	@Override
+	public int compareTo(Quadro o) {
+		if (this.totalCredito > o.getTotalCredito()) {
+			return -1;
+		} else if (this.totalCredito < o.getTotalCredito()) {
+			return 1;
+		}
+		return 0;
 	}
 
 }

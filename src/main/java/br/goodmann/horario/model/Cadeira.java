@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Cadeira {
 
-	private String codigo;
-	private String descricao;
-	private int credito;
+	private String codigo = "";
+	private String descricao = "";
+	private int credito = 0;
 
 	@JsonIgnore
 	private List<String> periodos;

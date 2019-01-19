@@ -3,8 +3,11 @@ package br.goodmann.horario.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import br.goodmann.horario.model.Cadeira;
 
+@Service
 public class MontaObjetos {
 
 	private List<String> formataHorario(String vet2) throws Exception {
@@ -59,9 +62,7 @@ public class MontaObjetos {
 			if (linha.startsWith("Nivel")) {
 
 				codigo = linha.substring(linha.length() - 8, linha.length());
-				String[] vet = codigo.split("-");
-				codigo = vet[0].trim();
-				credito = Integer.valueOf(vet[1]);
+				credito = Integer.valueOf(codigo.split("-")[1]);
 
 			} else if (linha.contains("Nome: ")) {
 
@@ -75,6 +76,9 @@ public class MontaObjetos {
 
 					Cadeira cadeira = new Cadeira();
 					cadeira.setDescricao(descricao);
+					if ("".equals(codigo) || codigo == null){
+						throw new Exception("codigo vazio");
+					}
 					cadeira.setCodigo(codigo);
 					cadeira.setCredito(credito);
 					cadeira.setPeriodos(this.formataHorario(linha));

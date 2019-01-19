@@ -2,6 +2,7 @@ package br.goodmann.horario.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,16 @@ import br.goodmann.horario.service.MontaQuadros;
 @RestController
 public class HorarioController {
 
-	@GetMapping("/quadros")
-	public List<Quadro> test() throws Exception {
+	@Autowired
+	private MontaObjetos montaObjetos;
+
+	@Autowired
+	private MontaQuadros montaQuadros;
+
+	private List<Cadeira> cadeiras;
+
+	@GetMapping("/cadeiras")
+	public List<Cadeira> cadeiras() throws Exception {
 
 		// IGNORAR
 		String[] ignorarPeriodos = {};
@@ -29,12 +38,16 @@ public class HorarioController {
 		ArquivoUtil arquivo = new ArquivoUtil();
 		List<String> linhas = arquivo.lerArquivo(path);
 
-		// Transforma linhas do arquivo em objetos
-		MontaObjetos ler = new MontaObjetos();
-		List<Cadeira> cadeiras = ler.cadeiras(linhas, ignorarPeriodos, ignorarCadeiras);
+		this.cadeiras = this.montaObjetos.cadeiras(linhas, ignorarPeriodos, ignorarCadeiras);
 
-		MontaQuadros montar = new MontaQuadros();
-		return montar.quadros(cadeiras);
+		return this.cadeiras;
+	}
 
+	@GetMapping("/quadros")
+	public List<Quadro> quadros() throws Exception {
+		if (this.cadeiras == null || this.cadeiras.isEmpty()) {
+			this.cadeiras = this.cadeiras();
+		}
+		return this.montaQuadros.quadros(this.cadeiras);
 	}
 }
