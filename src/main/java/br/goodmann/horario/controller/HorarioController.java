@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.goodmann.horario.model.Cadeira;
+import br.goodmann.horario.model.Filtro;
 import br.goodmann.horario.model.Quadro;
 import br.goodmann.horario.service.ArquivoUtil;
 import br.goodmann.horario.service.MontaObjetos;
@@ -41,24 +43,21 @@ public class HorarioController {
 		return cadeiras;
 	}
 
-	private List<Cadeira> cadeiras() {
-
-	}
-
 	@GetMapping("/quadros")
-	public List<Quadro> quadros() throws Exception {
+	public List<Quadro> quadros(@RequestParam(name = "filtro") Filtro filtro) throws Exception {
 
-		// IGNORAR
-		String[] ignorarPeriodos = {};
-
-		String[] ignorarCadeiras = {};
-
+		System.out.println(filtro.getIgnorarCadeiras());
+		System.out.println(filtro.getIgnorarPeriodos());
+		/*
+		 * String[] ignorarPeriodos = {}; String[] ignorarCadeiras = {};
+		 */
 		// Ler Arquivo e pega as linhas
 		String path = "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
 		ArquivoUtil arquivo = new ArquivoUtil();
 		List<String> linhas = arquivo.lerArquivo(path);
 
-		List<Cadeira> cadeiras = this.montaObjetos.cadeiras(linhas, ignorarPeriodos, ignorarCadeiras);
+		List<Cadeira> cadeiras = this.montaObjetos.cadeiras(linhas, filtro.getIgnorarPeriodos(),
+				filtro.getIgnorarCadeiras());
 
 		return this.montaQuadros.quadros(cadeiras);
 	}
