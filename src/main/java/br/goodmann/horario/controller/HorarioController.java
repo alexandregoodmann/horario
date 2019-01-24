@@ -34,7 +34,7 @@ public class HorarioController {
 		String[] ignorarCadeiras = {};
 
 		// Ler Arquivo e pega as linhas
-		String path = "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
+		String path = "C:\\dev\\horario\\src\\main\\resources\\2018-2.txt";
 		ArquivoUtil arquivo = new ArquivoUtil();
 		List<String> linhas = arquivo.lerArquivo(path);
 
@@ -44,20 +44,19 @@ public class HorarioController {
 	}
 
 	@GetMapping("/quadros")
-	public List<Quadro> quadros(@RequestParam(name = "filtro") Filtro filtro) throws Exception {
+	public List<Quadro> quadros() throws Exception {
 
-		System.out.println(filtro.getIgnorarCadeiras());
-		System.out.println(filtro.getIgnorarPeriodos());
-		/*
-		 * String[] ignorarPeriodos = {}; String[] ignorarCadeiras = {};
-		 */
+		String[] ignorarPeriodos = {};
+		String[] ignorarCadeiras = {};
+
 		// Ler Arquivo e pega as linhas
-		String path = "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
+		// String path = "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
+		String path = "C:\\dev\\horario\\src\\main\\resources\\2018-2.txt";
+
 		ArquivoUtil arquivo = new ArquivoUtil();
 		List<String> linhas = arquivo.lerArquivo(path);
 
-		List<Cadeira> cadeiras = this.montaObjetos.cadeiras(linhas, filtro.getIgnorarPeriodos(),
-				filtro.getIgnorarCadeiras());
+		List<Cadeira> cadeiras = this.montaObjetos.cadeiras(linhas, ignorarPeriodos, ignorarCadeiras);
 
 		return this.montaQuadros.quadros(cadeiras);
 	}
