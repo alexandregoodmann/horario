@@ -1,7 +1,10 @@
 package br.goodmann.horario.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -49,7 +52,19 @@ public class MontaObjetos {
 		return list;
 	}
 
-	public List<Cadeira> cadeiras(List<String> linhas, String[] vetPeriodos, String[] vetCadeiras) throws Exception {
+	public List<Cadeira> disciplinas(List<String> linhas, String[] vetPeriodos, String[] vetCadeiras) throws Exception {
+		List<Cadeira> list = this.turmasDasDisciplinas(linhas, vetPeriodos, vetCadeiras);
+		Map<String, Cadeira> mapa = new HashMap<String, Cadeira>();
+		for (Cadeira cadeira : list) {
+			mapa.put(cadeira.getCodigo(), cadeira);
+		}
+		List<Cadeira> retorno = new ArrayList<Cadeira>(mapa.values());
+		Collections.sort(retorno);
+		return retorno;
+	}
+
+	public List<Cadeira> turmasDasDisciplinas(List<String> linhas, String[] vetPeriodos, String[] vetCadeiras)
+			throws Exception {
 
 		List<Cadeira> cadeiras = new ArrayList<Cadeira>();
 
@@ -76,7 +91,7 @@ public class MontaObjetos {
 
 					Cadeira cadeira = new Cadeira();
 					cadeira.setDescricao(descricao);
-					if ("".equals(codigo) || codigo == null){
+					if ("".equals(codigo) || codigo == null) {
 						throw new Exception("codigo vazio");
 					}
 					cadeira.setCodigo(codigo);

@@ -25,6 +25,26 @@ public class HorarioController {
 
 	private List<Cadeira> cadeiras;
 
+	@GetMapping("/disciplinas")
+	public List<Cadeira> disciplinas() throws Exception {
+
+		// IGNORAR
+		String[] ignorarPeriodos = {};
+
+		String[] ignorarCadeiras = {};
+
+		// Ler Arquivo e pega as linhas
+		// String path =
+		// "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
+		String path = "D:\\dev\\horario\\src\\main\\resources\\2018-2.txt";
+
+		ArquivoUtil arquivo = new ArquivoUtil();
+		List<String> linhas = arquivo.lerArquivo(path);
+
+		return this.montaObjetos.disciplinas(linhas, ignorarPeriodos, ignorarCadeiras);
+
+	}
+
 	@GetMapping("/cadeiras")
 	public List<Cadeira> cadeiras() throws Exception {
 
@@ -34,11 +54,14 @@ public class HorarioController {
 		String[] ignorarCadeiras = {};
 
 		// Ler Arquivo e pega as linhas
-		String path = "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
+		// String path =
+		// "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
+		String path = "D:\\dev\\horario\\src\\main\\resources\\2018-2.txt";
+
 		ArquivoUtil arquivo = new ArquivoUtil();
 		List<String> linhas = arquivo.lerArquivo(path);
 
-		this.cadeiras = this.montaObjetos.cadeiras(linhas, ignorarPeriodos, ignorarCadeiras);
+		this.cadeiras = this.montaObjetos.turmasDasDisciplinas(linhas, ignorarPeriodos, ignorarCadeiras);
 
 		return this.cadeiras;
 	}

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Cadeira {
+public class Cadeira implements Comparable<Cadeira> {
 
 	private String codigo = "";
 	private String descricao = "";
@@ -43,6 +43,11 @@ public class Cadeira {
 
 	public void setPeriodos(List<String> periodos) {
 		this.periodos = periodos;
+	}
+
+	@Override
+	public int compareTo(Cadeira o) {
+		return this.descricao.compareTo(o.getDescricao());
 	}
 
 }
