@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.goodmann.horario.model.Cadeira;
@@ -24,26 +26,6 @@ public class HorarioController {
 	private MontaQuadros montaQuadros;
 
 	private List<Cadeira> cadeiras;
-
-	@GetMapping("/disciplinas")
-	public List<Cadeira> disciplinas() throws Exception {
-
-		// IGNORAR
-		String[] ignorarPeriodos = {};
-
-		String[] ignorarCadeiras = {};
-
-		// Ler Arquivo e pega as linhas
-		// String path =
-		// "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
-		String path = "D:\\dev\\horario\\src\\main\\resources\\2018-2.txt";
-
-		ArquivoUtil arquivo = new ArquivoUtil();
-		List<String> linhas = arquivo.lerArquivo(path);
-
-		return this.montaObjetos.disciplinas(linhas, ignorarPeriodos, ignorarCadeiras);
-
-	}
 
 	@GetMapping("/cadeiras")
 	public List<Cadeira> cadeiras() throws Exception {
@@ -66,11 +48,17 @@ public class HorarioController {
 		return this.cadeiras;
 	}
 
-	@GetMapping("/quadros")
-	public List<Quadro> quadros() throws Exception {
-		if (this.cadeiras == null || this.cadeiras.isEmpty()) {
-			this.cadeiras = this.cadeiras();
-		}
+	@PostMapping("/quadros")
+	public List<Quadro> quadros(@RequestBody Filtro filtro) throws Exception {
+
+		String path = "D:\\dev\\horario\\src\\main\\resources\\2018-2.txt";
+
+		ArquivoUtil arquivo = new ArquivoUtil();
+		List<String> linhas = arquivo.lerArquivo(path);
+
+		this.cadeiras = this.montaObjetos.turmasDasDisciplinas(linhas, filtro.getIgnorarPeriodos(),
+				filtro.getIgnorarCadeiras());
+		
 		return this.montaQuadros.quadros(this.cadeiras);
 	}
 }

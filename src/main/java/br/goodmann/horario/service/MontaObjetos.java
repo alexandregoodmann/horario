@@ -111,8 +111,10 @@ public class MontaObjetos {
 
 		// ignora os Períodos listados (2JK, 3LM, 5NP)
 		for (String per : vetPeriodos) {
-			if (cadeira.getPeriodos().contains(per)) {
-				return true;
+			for (String s : cadeira.getPeriodos()) {
+				if (per.compareToIgnoreCase(s.substring(1)) == 0) {
+					return true;
+				}
 			}
 		}
 
