@@ -26,6 +26,8 @@ public class HorarioController {
 	private MontaQuadros montaQuadros;
 
 	private List<Cadeira> cadeiras;
+	
+	private String path = "C:\\dev\\horario\\src\\main\\resources\\2018-2.txt";
 
 	@GetMapping("/cadeiras")
 	public List<Cadeira> cadeiras() throws Exception {
@@ -34,11 +36,6 @@ public class HorarioController {
 		String[] ignorarPeriodos = {};
 
 		String[] ignorarCadeiras = {};
-
-		// Ler Arquivo e pega as linhas
-		// String path =
-		// "/home/alexandre/eclipse-workspace/horario/src/main/resources/2018-2.txt";
-		String path = "D:\\dev\\horario\\src\\main\\resources\\2018-2.txt";
 
 		ArquivoUtil arquivo = new ArquivoUtil();
 		List<String> linhas = arquivo.lerArquivo(path);
@@ -50,8 +47,6 @@ public class HorarioController {
 
 	@PostMapping("/quadros")
 	public List<Quadro> quadros(@RequestBody Filtro filtro) throws Exception {
-
-		String path = "D:\\dev\\horario\\src\\main\\resources\\2018-2.txt";
 
 		ArquivoUtil arquivo = new ArquivoUtil();
 		List<String> linhas = arquivo.lerArquivo(path);
